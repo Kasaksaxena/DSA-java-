@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class LC415 {
+
+    public static String addStrings(String num1, String num2) {
+
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
+
+        int carry = 0;
+
+        StringBuilder ans = new StringBuilder();
+
+        while (i >= 0 || j >= 0 || carry != 0) {
+
+            int sum = carry;
+
+            if (i >= 0) {
+                sum += num1.charAt(i) - '0';
+                i--;
+            }
+
+            if (j >= 0) {
+                sum += num2.charAt(j) - '0';
+                j--;
+            }
+
+            ans.append(sum % 10);
+
+            carry = sum / 10;
+        }
+
+        return ans.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+
+        String num1 = "11";
+        String num2 = "123";
+
+        System.out.println(addStrings(num1, num2));
+    }
+}
